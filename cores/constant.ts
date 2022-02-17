@@ -1,0 +1,1 @@
+export const TEN_MINUTE = 60 * 10 * 1000;
