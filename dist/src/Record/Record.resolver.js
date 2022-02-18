@@ -9,24 +9,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.User = void 0;
+exports.RecordResolver = void 0;
 const graphql_1 = require("@nestjs/graphql");
-const typeorm_1 = require("typeorm");
-const BaseEntity_1 = require("./BaseEntity");
-let User = class User extends BaseEntity_1.Base {
+let RecordResolver = class RecordResolver {
+    constructor() {
+    }
 };
-__decorate([
-    (0, graphql_1.Field)(),
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", String)
-], User.prototype, "name", void 0);
-__decorate([
-    (0, graphql_1.Field)(),
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", String)
-], User.prototype, "userImage", void 0);
-User = __decorate([
-    (0, graphql_1.ObjectType)(),
-    (0, typeorm_1.Entity)()
-], User);
-exports.User = User;
+RecordResolver = __decorate([
+    (0, graphql_1.Resolver)(),
+    __metadata("design:paramtypes", [])
+], RecordResolver);
+exports.RecordResolver = RecordResolver;

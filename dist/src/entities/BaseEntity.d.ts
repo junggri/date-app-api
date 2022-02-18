@@ -4,5 +4,4 @@ export declare abstract class Base extends BaseEntity {
     createdAt: Date;
     updatedAt?: Date;
     deletedAt?: Date;
-    get hashId(): string;
 }

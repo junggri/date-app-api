@@ -8,25 +8,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.User = void 0;
-const graphql_1 = require("@nestjs/graphql");
-const typeorm_1 = require("typeorm");
-const BaseEntity_1 = require("./BaseEntity");
-let User = class User extends BaseEntity_1.Base {
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
 };
-__decorate([
-    (0, graphql_1.Field)(),
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", String)
-], User.prototype, "name", void 0);
-__decorate([
-    (0, graphql_1.Field)(),
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", String)
-], User.prototype, "userImage", void 0);
-User = __decorate([
-    (0, graphql_1.ObjectType)(),
-    (0, typeorm_1.Entity)()
-], User);
-exports.User = User;
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.AttendanceService = void 0;
+const common_1 = require("@nestjs/common");
+const typeorm_1 = require("@nestjs/typeorm");
+const entities_1 = require("../entities");
+const typeorm_2 = require("typeorm");
+let AttendanceService = class AttendanceService {
+    constructor(postRepository) {
+        this.postRepository = postRepository;
+    }
+};
+AttendanceService = __decorate([
+    (0, common_1.Injectable)(),
+    __param(0, (0, typeorm_1.InjectRepository)(entities_1.Attendance)),
+    __metadata("design:paramtypes", [typeorm_2.Repository])
+], AttendanceService);
+exports.AttendanceService = AttendanceService;

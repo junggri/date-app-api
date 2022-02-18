@@ -34,41 +34,17 @@ const graphql_1 = require("@nestjs/graphql");
 const path_1 = require("path");
 const config_1 = require("@nestjs/config");
 const typeorm_1 = require("@nestjs/typeorm");
-const hit_module_1 = require("./hit/hit.module");
-const post_module_1 = require("./post/post.module");
-const hashids_module_1 = require("./hashids/hashids.module");
-const file_module_1 = require("./file/file.module");
-const tag_module_1 = require("./tag/tag.module");
-const core_1 = require("@nestjs/core");
-const nestjs_graphql_typeorm_dataloader_1 = require("@webundsoehne/nestjs-graphql-typeorm-dataloader");
-const typeorm_2 = require("typeorm");
-const reply_module_1 = require("./reply/reply.module");
-const like_module_1 = require("./like/like.module");
-const complexity_1 = require("../utils/complexity");
 const graphql_depth_limit_1 = __importDefault(require("graphql-depth-limit"));
-const visit_module_1 = require("./visit/visit.module");
-const date_module_1 = require("./date/date.module");
-const external_module_1 = require("./externalApi/external.module");
-const pagination_module_1 = require("./pagination/pagination.module");
-const message_module_1 = require("./message/message.module");
-const google_module_1 = require("./google/google.module");
-const auth_module_1 = require("./auth/auth.module");
-const user_module_1 = require("./user/user.module");
-const encrypt_module_1 = require("./encrypt/encrypt.module");
 const config = __importStar(require("../ormconfig"));
+const Register_module_1 = require("./Register/Register.module");
+const Attendance_module_1 = require("./Attendance/Attendance.module");
+const Place_module_1 = require("./Place/Place.module");
+const Record_module_1 = require("./Record/Record.module");
+const user_module_1 = require("./User/user.module");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     (0, common_1.Module)({
-        providers: [
-            {
-                provide: core_1.APP_INTERCEPTOR,
-                useFactory: () => new nestjs_graphql_typeorm_dataloader_1.DataLoaderInterceptor({
-                    typeormGetConnection: typeorm_2.getConnection
-                })
-            },
-            complexity_1.ComplexityPlugin
-        ],
         imports: [
             config_1.ConfigModule.forRoot({
                 envFilePath: process.env.NODE_ENV === "development" ? ".env.development" : ".env.production",
@@ -82,30 +58,16 @@ AppModule = __decorate([
                     origin: true,
                     credentials: true,
                 },
-                buildSchemaOptions: {
-                    fieldMiddleware: [nestjs_graphql_typeorm_dataloader_1.TypeormLoaderMiddleware]
-                },
                 validationRules: [
                     (0, graphql_depth_limit_1.default)(8)
                 ],
                 context: ({ req, res }) => ({ req, res }),
             }),
-            post_module_1.PostModule,
-            hit_module_1.HitModule,
-            hashids_module_1.HashidsModule,
-            file_module_1.FileModule,
-            reply_module_1.ReplyModule,
-            tag_module_1.TagModule,
-            like_module_1.LikeModule,
-            visit_module_1.VisitModule,
-            date_module_1.DateModule,
-            external_module_1.ExternalModule,
-            pagination_module_1.PaginationModule,
-            message_module_1.MessageModule,
-            google_module_1.GoogleModule,
-            auth_module_1.AuthModule,
-            user_module_1.UserModule,
-            encrypt_module_1.EncryptModule
+            Register_module_1.RegisterModule,
+            Attendance_module_1.AttendanceModule,
+            Place_module_1.PlaceModule,
+            Record_module_1.RecordModule,
+            user_module_1.UserModule
         ],
     })
 ], AppModule);

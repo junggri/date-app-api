@@ -1,5 +1,5 @@
-import { Base } from "@src/entities/BaseEntity";
+import { Base } from "./BaseEntity";
 export declare class User extends Base {
-    username: string;
-    hash: string;
+    name: string;
+    userImage: string;
 }

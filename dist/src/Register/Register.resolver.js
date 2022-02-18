@@ -9,31 +9,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Base = void 0;
+exports.RegisterResolver = void 0;
 const graphql_1 = require("@nestjs/graphql");
-const typeorm_1 = require("typeorm");
-let Base = class Base extends typeorm_1.BaseEntity {
+const entities_1 = require("../entities");
+let RegisterResolver = class RegisterResolver {
+    constructor() {
+    }
+    ping() {
+        return "Pong";
+    }
 };
 __decorate([
-    (0, typeorm_1.PrimaryGeneratedColumn)(),
-    (0, graphql_1.Field)(() => graphql_1.Int),
-    __metadata("design:type", Number)
-], Base.prototype, "id", void 0);
-__decorate([
-    (0, typeorm_1.CreateDateColumn)(),
-    (0, graphql_1.Field)(),
-    __metadata("design:type", Date)
-], Base.prototype, "createdAt", void 0);
-__decorate([
-    (0, typeorm_1.UpdateDateColumn)({ nullable: true }),
-    (0, graphql_1.Field)({ nullable: true }),
-    __metadata("design:type", Date)
-], Base.prototype, "updatedAt", void 0);
-__decorate([
-    (0, typeorm_1.DeleteDateColumn)({ nullable: true }),
-    __metadata("design:type", Date)
-], Base.prototype, "deletedAt", void 0);
-Base = __decorate([
-    (0, graphql_1.ObjectType)({ isAbstract: true })
-], Base);
-exports.Base = Base;
+    (0, graphql_1.Query)(() => String),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], RegisterResolver.prototype, "ping", null);
+RegisterResolver = __decorate([
+    (0, graphql_1.Resolver)(() => entities_1.Register),
+    __metadata("design:paramtypes", [])
+], RegisterResolver);
+exports.RegisterResolver = RegisterResolver;
