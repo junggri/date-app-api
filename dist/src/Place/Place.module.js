@@ -12,12 +12,14 @@ const Place_service_1 = require("./Place.service");
 const Place_resolver_1 = require("./Place.resolver");
 const typeorm_1 = require("@nestjs/typeorm");
 const entities_1 = require("../entities");
+const user_module_1 = require("../User/user.module");
 let PlaceModule = class PlaceModule {
 };
 PlaceModule = __decorate([
     (0, common_1.Module)({
         imports: [
-            typeorm_1.TypeOrmModule.forFeature([entities_1.Place])
+            typeorm_1.TypeOrmModule.forFeature([entities_1.Place]),
+            user_module_1.UserModule
         ],
         providers: [
             Place_service_1.PlaceService,

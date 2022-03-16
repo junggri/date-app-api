@@ -13,6 +13,8 @@ exports.Record = void 0;
 const graphql_1 = require("@nestjs/graphql");
 const typeorm_1 = require("typeorm");
 const BaseEntity_1 = require("./BaseEntity");
+const Place_1 = require("./Place");
+const Picture_1 = require("./Picture");
 let Record = class Record extends BaseEntity_1.Base {
 };
 __decorate([
@@ -25,6 +27,21 @@ __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
 ], Record.prototype, "url", void 0);
+__decorate([
+    (0, graphql_1.Field)(),
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", String)
+], Record.prototype, "description", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => Place_1.Place),
+    (0, typeorm_1.OneToOne)(() => Place_1.Place, place => place.record),
+    __metadata("design:type", Place_1.Place)
+], Record.prototype, "place", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => [Picture_1.Picture]),
+    (0, typeorm_1.OneToMany)(() => Picture_1.Picture, picture => picture.record),
+    __metadata("design:type", Array)
+], Record.prototype, "picture", void 0);
 Record = __decorate([
     (0, graphql_1.ObjectType)(),
     (0, typeorm_1.Entity)()

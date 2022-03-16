@@ -1,6 +1,7 @@
 import {Field, ObjectType} from "@nestjs/graphql";
-import {Column, Entity} from "typeorm";
+import {Column, Entity, OneToMany} from "typeorm";
 import {Base} from "./BaseEntity";
+import {Place} from "@src/entities/Place";
 
 
 @ObjectType()
@@ -15,5 +16,15 @@ export class User extends Base {
   @Column()
   userImage: string
 
+  @Field()
+  @Column()
+  birthDay: Date
 
+  @Field()
+  @Column()
+  phoneNumber: string
+
+  @Field(() => [Place])
+  @OneToMany(() => Place, place => place.user)
+  place: [Place]
 }

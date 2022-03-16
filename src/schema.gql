@@ -2,6 +2,79 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Mutation {
+  insertPlace(data: PlaceInput!): String!
+}
+
+type Picture {
+  createdAt: DateTime!
+  id: Int!
+  record: Record!
+  updatedAt: DateTime
+  url: String!
+  who: String!
+}
+
+type Place {
+  buildingName: String!
+  createdAt: DateTime!
+  id: Int!
+  latitude: Float!
+  longitude: Float!
+  record: Record!
+  register: Register!
+  roadAddress: String!
+  updatedAt: DateTime
+  user: User!
+}
+
+input PlaceInput {
+  buildingName: String!
+  latitude: Float!
+  longitude: Float!
+  roadAddress: String!
+  who: String!
+}
+
 type Query {
+  getPlace: [Place!]!
   ping: String!
+}
+
+type Record {
+  createdAt: DateTime!
+  description: String!
+  id: Int!
+  picture: [Picture!]!
+  place: Place!
+  updatedAt: DateTime
+  url: String!
+  who: String!
+}
+
+type Register {
+  address: String!
+  createdAt: DateTime!
+  date: DateTime!
+  description: String!
+  id: Int!
+  place: [Place!]!
+  updatedAt: DateTime
+  who: String!
+}
+
+type User {
+  birthDay: DateTime!
+  createdAt: DateTime!
+  id: Int!
+  name: String!
+  phoneNumber: String!
+  place: [Place!]!
+  updatedAt: DateTime
+  userImage: String!
 }

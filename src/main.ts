@@ -2,27 +2,25 @@ import {NestFactory} from '@nestjs/core';
 import {NestExpressApplication} from '@nestjs/platform-express';
 import {AppModule} from './app.module';
 import setCorsOption from "@utils/setCorsOption";
-import {Session} from "@config/session";
-import session from "express-session";
 import compression from "compression";
 import cookieParser from "cookie-parser";
 import "reflect-metadata";
 import {ValidationPipe} from "@nestjs/common";
+import {graphqlUploadExpress} from 'graphql-upload';
+
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
 
   app.enableCors(setCorsOption<string>(
     [
-      "https://admin.junggri.com",
       "http://localhost:3002",
       "http://localhost:3000",
       "http://localhost:3001",
-      "http://admin.junggri.com",
+      "http://localhost:8081",
     ]
   ));
 
-  app.use(session(Session.create()))
-    .use(compression())
+  app.use(compression())
     .use(cookieParser())
     .use(graphqlUploadExpress({maxFileSize: 10000000, maxFiles: 10}));
 
@@ -36,7 +34,5 @@ async function bootstrap() {
 
   console.log(`listen ${process.env.PORT} port`);
 }
-
-import {graphqlUploadExpress} from 'graphql-upload';
 
 bootstrap();

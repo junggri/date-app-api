@@ -1,6 +1,7 @@
 import {Field, ObjectType} from "@nestjs/graphql";
-import {Column, Entity} from "typeorm";
+import {Column, Entity, OneToMany} from "typeorm";
 import {Base} from "@src/entities/BaseEntity"
+import {Place} from "@src/entities/Place";
 
 
 @ObjectType()
@@ -19,6 +20,11 @@ export class Register extends Base {
   @Column()
   date: Date
 
+  @Field()
   @Column()
-  period: number
+  description: string
+
+  @Field(() => [Place])
+  @OneToMany(() => Place, place => place.register)
+  place: Place[]
 }

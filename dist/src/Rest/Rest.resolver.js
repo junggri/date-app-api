@@ -5,20 +5,19 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.UserModule = void 0;
-const common_1 = require("@nestjs/common");
-const user_service_1 = require("./user.service");
-const user_resolver_1 = require("./user.resolver");
-const typeorm_1 = require("@nestjs/typeorm");
-const entities_1 = require("../entities");
-let UserModule = class UserModule {
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-UserModule = __decorate([
-    (0, common_1.Module)({
-        imports: [typeorm_1.TypeOrmModule.forFeature([entities_1.User])],
-        providers: [user_service_1.UserService, user_resolver_1.UserResolver],
-        exports: []
-    })
-], UserModule);
-exports.UserModule = UserModule;
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.RestResolver = void 0;
+const graphql_1 = require("@nestjs/graphql");
+const Rest_1 = require("../entities/Rest");
+let RestResolver = class RestResolver {
+    constructor() {
+    }
+};
+RestResolver = __decorate([
+    (0, graphql_1.Resolver)(() => Rest_1.Rest),
+    __metadata("design:paramtypes", [])
+], RestResolver);
+exports.RestResolver = RestResolver;

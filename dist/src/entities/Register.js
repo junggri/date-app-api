@@ -13,6 +13,7 @@ exports.Register = void 0;
 const graphql_1 = require("@nestjs/graphql");
 const typeorm_1 = require("typeorm");
 const BaseEntity_1 = require("./BaseEntity");
+const Place_1 = require("./Place");
 let Register = class Register extends BaseEntity_1.Base {
 };
 __decorate([
@@ -31,9 +32,15 @@ __decorate([
     __metadata("design:type", Date)
 ], Register.prototype, "date", void 0);
 __decorate([
+    (0, graphql_1.Field)(),
     (0, typeorm_1.Column)(),
-    __metadata("design:type", Number)
-], Register.prototype, "period", void 0);
+    __metadata("design:type", String)
+], Register.prototype, "description", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => [Place_1.Place]),
+    (0, typeorm_1.OneToMany)(() => Place_1.Place, place => place.register),
+    __metadata("design:type", Array)
+], Register.prototype, "place", void 0);
 Register = __decorate([
     (0, graphql_1.ObjectType)(),
     (0, typeorm_1.Entity)()

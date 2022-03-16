@@ -41,6 +41,8 @@ const Attendance_module_1 = require("./Attendance/Attendance.module");
 const Place_module_1 = require("./Place/Place.module");
 const Record_module_1 = require("./Record/Record.module");
 const user_module_1 = require("./User/user.module");
+const Rest_module_1 = require("./Rest/Rest.module");
+const Picture_module_1 = require("./Picture/Picture.module");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -65,9 +67,11 @@ AppModule = __decorate([
             }),
             Register_module_1.RegisterModule,
             Attendance_module_1.AttendanceModule,
-            Place_module_1.PlaceModule,
             Record_module_1.RecordModule,
-            user_module_1.UserModule
+            user_module_1.UserModule,
+            Place_module_1.PlaceModule,
+            Rest_module_1.RestModule,
+            Picture_module_1.PictureModule,
         ],
     })
 ], AppModule);

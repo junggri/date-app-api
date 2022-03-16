@@ -1,26 +1,42 @@
 import {Field, ObjectType} from "@nestjs/graphql";
-import {Column, Entity} from "typeorm";
+import {Column, Entity, ManyToOne, OneToOne} from "typeorm";
 import {Base} from "@src/entities/BaseEntity"
+import {Register} from "@src/entities/Register";
+import {Record} from "@src/entities/Record";
+import {User} from "@src/entities/User";
 
 
 @ObjectType()
 @Entity()
 
 export class Place extends Base {
-  //
-  // @ManyToOne(() => Post, post => post.likes, {onDelete: 'CASCADE'})
-  // @JoinColumn({name: 'post_id'})
-  // post: Post
 
   @Field()
   @Column()
-  who: string
+  buildingName: string
 
   @Field()
   @Column()
-  address: string
+  roadAddress: string
 
   @Field()
   @Column()
-  date: Date
+  latitude: number
+
+  @Field()
+  @Column()
+  longitude: number
+
+  @Field(() => Register)
+  @ManyToOne(() => Register, register => register.place)
+  register: Register
+
+  @Field(() => Record)
+  @OneToOne(() => Record, record => record.place)
+  record: Record
+
+
+  @Field(() => User)
+  @ManyToOne(() => User, user => user.place)
+  user: User
 }
