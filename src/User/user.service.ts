@@ -30,19 +30,19 @@ export class UserService {
         birthDay: new Date(1994, 9, 5),
         phoneNumber: "01027181612"
       })
-      .execute(),
+      .execute()
 
-      await this.userRepository
-        .createQueryBuilder()
-        .insert()
-        .into(User)
-        .values({
-          name: "js",
-          userImage: "",
-          birthDay: new Date(1994, 10, 3),
-          phoneNumber: "01077652103"
-        })
-        .execute()
+    await this.userRepository
+      .createQueryBuilder()
+      .insert()
+      .into(User)
+      .values({
+        name: "js",
+        userImage: "",
+        birthDay: new Date(1994, 10, 3),
+        phoneNumber: "01077652103"
+      })
+      .execute()
   }
 
 }
